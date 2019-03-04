@@ -22,7 +22,6 @@ class UserPostListView(ListView):
     model = Post
     template_name = 'blog/user_posts.html'
     context_object_name = 'posts'
-#   ordering = ['-date_posted']
     paginate_by = 4
 
     def get_queryset(self):
@@ -36,7 +35,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'video']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -45,7 +44,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'video']
 
     def form_valid(self, form):
         form.instance.author = self.request.user

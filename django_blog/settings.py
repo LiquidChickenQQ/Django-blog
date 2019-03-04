@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
-    'storages'
+    'storages',
+    'embed_video'
 
 ]
 
@@ -55,6 +56,14 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'django_blog.urls'
+
+
+EMBED_VIDEO_BACKENDS = (
+    'embed_video.backends.YoutubeBackend',
+    'embed_video.backends.VimeoBackend',
+    'embed_video.backends.SoundCloudBackend',
+)
+
 
 TEMPLATES = [
     {
