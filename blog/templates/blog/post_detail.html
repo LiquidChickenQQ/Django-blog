@@ -1,7 +1,7 @@
 {% extends "blog/base.html" %}
 {% load embed_video_tags %}
 {% block content %}
-        <article class="media content-section">
+        <article class="container-fluid">
             <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
           <div class="media-body">
             <div class="article-metadata">
@@ -18,7 +18,7 @@
             <p class="article-content">{{ object.content }}</p>
 
                 {% video post.video as my_video %}
-                {% video post.video 'small' %}
+                {% video post.video '100% x 300' %}
                 {% endvideo %}
 
           </div>

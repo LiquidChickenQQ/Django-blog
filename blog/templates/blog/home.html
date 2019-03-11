@@ -2,8 +2,8 @@
 {% load embed_video_tags %}
 {% block content %}
     {% for post in posts %}
-
-        <article class="media content-section">
+<br>
+        <article class="container-fluid">
             <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
           <div class="media-body">
             <div class="article-metadata">
@@ -11,9 +11,11 @@
               <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
             </div>
             <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-                {% video post.video as my_video %}
-                {% video post.video 'small' %}
-                {% endvideo %}
+              <div class="video">
+                  {% video post.video as my_video %}
+                  {% video post.video '100% x 300' %}
+                  {% endvideo %}
+              </div>
           </div>
         </article>
     {% endfor %}
