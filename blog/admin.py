@@ -1,6 +1,6 @@
 from django.contrib import admin
 from embed_video.admin import AdminVideoMixin
-from .models import Post
+from .models import Post, Comment
 
 
 class MyModelAdmin(AdminVideoMixin, admin.ModelAdmin):
@@ -8,4 +8,5 @@ class MyModelAdmin(AdminVideoMixin, admin.ModelAdmin):
 
 
 admin.site.register(Post, MyModelAdmin)
+admin.site.register(Comment)
 

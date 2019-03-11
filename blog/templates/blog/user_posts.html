@@ -18,7 +18,17 @@
             </div>
           </div>
         </article>
-
+            <hr>
+          {% for comment in post.comments.all %}
+                <div class="comment">
+                    <div class="date">{{ comment.created_date|date:"F d, Y"  }}</div>
+                    <strong>{{ comment.author }}</strong>
+                    <p>{{ comment.text|linebreaks }}</p>
+                    <a href="{% url 'post-detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
+                </div>
+            {% empty %}
+                <p>No comments here yet :(</p>
+            {% endfor %}
     {% endfor %}
 
     {% if is_paginated %}
