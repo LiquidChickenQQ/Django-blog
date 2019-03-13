@@ -19,7 +19,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey('blog.Post', on_delete=models.CASCADE, related_name='comments')
-    author = models.CharField(max_length=200)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
     created_date = models.DateTimeField(auto_now=True)
     approved_comment = models.BooleanField(default=False)
@@ -30,8 +30,4 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
-
-
-def approved_comments(self):
-    return self.comments.filter(approved_comment=True)
 

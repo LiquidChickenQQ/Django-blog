@@ -24,6 +24,9 @@ SECRET_KEY = 'gyzks7^*1vy7_(@=v!%&*bpb5#s@i0fy29q%tberf%j*br%rmm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+PASSWORD = os.environ.get('PASSWORD')
+SECRET_KEY1 = os.environ.get('SECRET_KEY1')
+
 
 ALLOWED_HOSTS = []
 
@@ -92,7 +95,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'django_project',
         'USER': 'postgres',
-        'PASSWORD': 'Laurabodle1',
+        'PASSWORD': PASSWORD,
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -153,14 +156,4 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
-"""
-AWS_ACCESS_KEY_ID = 'AKIAJV7X7PC36CJ5O6QQ'
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-"""
