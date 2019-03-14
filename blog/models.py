@@ -22,7 +22,6 @@ class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
     created_date = models.DateTimeField(auto_now=True)
-    approved_comment = models.BooleanField(default=False)
 
     def approve(self):
         self.approved_comment = True
@@ -30,4 +29,5 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+
 
