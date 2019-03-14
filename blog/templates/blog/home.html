@@ -9,6 +9,10 @@
             <div class="article-metadata">
               <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
               <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+                {% if not post.approved_post %}
+                <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                <a class="btn btn-default" href="{% url 'post_approve' pk=post.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+                {% endif %}
             </div>
             <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
               <div class="video">

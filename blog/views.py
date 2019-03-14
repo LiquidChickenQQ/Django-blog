@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Post
 from .forms import CommentForm
-from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.views.generic import (ListView,
                                   DetailView,
@@ -42,6 +42,20 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+@login_required
+def post_approve(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.approve()
+    return redirect('post-detail', pk=post.post.pk)
+
+
+@login_required
+def post_remove(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.delete()
+    return redirect('post-detail', pk=post.post.pk)
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):

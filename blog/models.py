@@ -16,16 +16,15 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})
 
+    def approved_posts(self):
+        return self.post.filter(approved_posts=True)
+
 
 class Comment(models.Model):
     post = models.ForeignKey('blog.Post', on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
     created_date = models.DateTimeField(auto_now=True)
-
-    def approve(self):
-        self.approved_comment = True
-        self.save()
 
     def __str__(self):
         return self.text
