@@ -2,7 +2,7 @@
 {% load embed_video_tags %}
 {% block content %}
     {% for post in posts %}
-<br>
+    <br>
         <article class="container-fluid">
             <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
           <div class="media-body">
@@ -21,7 +21,7 @@
                   {% endvideo %}
               </div>
           </div>
-                    <br>
+    <br>
         <a href="#comments" data-toggle="collapse">Comments: ({{ post.comments.count }})</a>
         <div id="comments" class="collapse">
             <hr>
@@ -61,7 +61,3 @@
 
     {% endif %}
 {% endblock content %}
-
-
-
-

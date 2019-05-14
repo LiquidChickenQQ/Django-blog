@@ -92,6 +92,7 @@ def landing(request):
     return render(request, 'blog/landing.html', {'title': 'Landing'})
 
 
+@login_required
 def add_comment_to_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -104,8 +105,3 @@ def add_comment_to_post(request, pk):
     else:
         form = CommentForm()
     return render(request, 'blog/add_comment_to_post.html', {'form': form})
-
-
-
-
-

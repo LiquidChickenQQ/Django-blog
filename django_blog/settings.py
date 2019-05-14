@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'crispy_forms',
     'storages',
-    'embed_video'
+    'embed_video',
 
 ]
 
@@ -95,7 +95,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'django_project',
         'USER': 'postgres',
-        'PASSWORD': PASSWORD,
+        'PASSWORD': 3510,  # os.getenv()
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
