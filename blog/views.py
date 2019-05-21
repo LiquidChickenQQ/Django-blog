@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .models import Post
+from .models import Post, Comment
 from .forms import CommentForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -98,10 +98,16 @@ def add_comment_to_post(request, pk):
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
-            comment = form.save(commit=False)
-            comment.post = post
+            text = request.POST.get('text')
+            comment = Comment.objects.create(post=post, author=request.user, text=text)
             comment.save()
             return redirect('/home', pk=post.pk)
     else:
         form = CommentForm()
     return render(request, 'blog/add_comment_to_post.html', {'form': form})
+
+
+# comment = form.save(commit=False)
+#             comment.post = post
+#             comment.save()
+#             return redirect('/home', pk=post.pk)

@@ -9,4 +9,3 @@ class MyModelAdmin(AdminVideoMixin, admin.ModelAdmin):
 
 admin.site.register(Post, MyModelAdmin)
 admin.site.register(Comment)
-

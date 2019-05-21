@@ -22,8 +22,8 @@
               </div>
           </div>
     <br>
-        <a href="#comments" data-toggle="collapse">Comments: ({{ post.comments.count }})</a>
-        <div id="comments" class="collapse">
+        <a href="#comments" data-toggle="">Comments: ({{ post.comments.count }})</a>
+        <div id="comments" class="">
             <hr>
             <a class="btn btn-outline-info" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
             {% for comment in post.comments.all %}
