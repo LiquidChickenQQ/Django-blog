@@ -15,3 +15,10 @@ class Pictures(models.Model):
     pics = models.ImageField(upload_to='past_pics')
     details = models.TextField(max_length=500)
     date_posted = models.DateTimeField(auto_now=True)
+
+
+class Sponser(models.Model):
+    logo = models.ImageField(upload_to='sponser_logos')
+    title = models.TextField(max_length=50)
+    description = models.TextField(max_length=500)
+    date_posted = models.DateTimeField(auto_now=True)

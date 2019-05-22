@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
-from .models import Event, Pictures
+from .models import Event, Pictures, Sponser
 
 from django.views.generic import (ListView,
                                   DetailView,
@@ -24,4 +24,12 @@ class PreviousEvents(ListView):
     template_name = 'event/past_events.html'
     context_object_name = 'pics'
     ordering = ['-date_posted']
-    paginate_by = 25
+    paginate_by = 20
+
+
+class SponsersView(ListView):
+    model = Sponser
+    template_name = 'event/sponsers.html'
+    context_object_name = 'sponsers'
+    ordering = ['-date_posted']
+    paginate_by = 10

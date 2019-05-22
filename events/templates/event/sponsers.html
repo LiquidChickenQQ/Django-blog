@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+<h1 class="center">Michiana Sponsers!</h1>
+
+{% for sponser in sponsers %}
+    <div class="card mb-3 mt-5 center">
+        <img class="card-img-top" src="{{ sponser.logo.url }}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{ sponser.title }}</h5>
+            <p class="card-text">{{ sponser.description }}</p>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock content %}
