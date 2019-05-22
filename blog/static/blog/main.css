@@ -93,3 +93,18 @@
     padding: 0px;
     /* add pic css */
   }
+
+
+  .myImgDiv {
+    width: 100%;
+    height: 50%;
+    display: inline-block;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .myLink {
+    text-decoration: none;
+  }

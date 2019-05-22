@@ -2,14 +2,13 @@
 {% block content %}
 {% load static %}
 
-<h1>Previous Events!</h1>
+<h1 class="center">Previous Events!</h1>
+<div class="myImgDiv">
+    {% for pic in pics %}
 
-{% for pic in past_pics %}
+        <img src="{{ pic.pics.url }}" class="img-fluid mt-5 mb-5" alt="Previous Event">
+        <p>{{ pic.details }}</p>
 
-<hr>
-<img class="mt-3" src="/media/past_pics/" alt="Event Pics">
-
-
-{% endfor %}
-
+    {% endfor %}
+</div>
 {% endblock content %}

@@ -13,4 +13,5 @@ class Event(models.Model):
 class Pictures(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     pics = models.ImageField(upload_to='past_pics')
+    details = models.TextField(max_length=500)
     date_posted = models.DateTimeField(auto_now=True)
