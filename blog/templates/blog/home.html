@@ -2,6 +2,7 @@
 {% load embed_video_tags %}
 {% block content %}
     {% for post in posts %}
+    {% if post.admin_approve == True %}
     <br>
         <article class="container-fluid">
             <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
@@ -9,10 +10,6 @@
             <div class="article-metadata">
               <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
               <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
-                {% if not post.approved_post %}
-                <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-                <a class="btn btn-default" href="{% url 'post_approve' pk=post.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
-                {% endif %}
             </div>
             <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
               <div class="video">
@@ -23,7 +20,7 @@
           </div>
     <br>
         <a href="#comments" data-toggle="">Comments: ({{ post.comments.count }})</a>
-        <div id="comments" class="">
+        <div id="comments" class="myComments">
             <hr>
             <a class="btn btn-outline-info" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
             {% for comment in post.comments.all %}
@@ -31,13 +28,17 @@
                     <small class="date">{{ comment.created_date|date:"F d, Y"  }}</small>
                     <small>{{ comment.author }}</small>
                     <p>{{ comment.text|linebreaks }}</p>
+                    <hr>
                 </div>
             {% empty %}
+            <br>
+            <br>
                 <p>No comments here yet</p>
             {% endfor %}
         </div>
         <br>
         </article>
+    {% endif %}
     {% endfor %}
 
 

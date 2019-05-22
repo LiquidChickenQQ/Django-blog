@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+{% if events %}
+    {% for event in events %}
+    <br>
+    <article class="container-fluid">
+        <img class="rounded-circle article-img" src="{{ event.author.profile.image.url }}">
+        <div class="media-body">
+            <div class="article-metadata">
+                <h2 class="mr-2">{{ event.author }}</h2>
+                <small class="text-muted">{{ event.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2>{{ event.details }}</h2>
+            <a href="{{ event.maps }}" target="_blank">Location of event!</a>
+        </div>
+    </article>
+    <br>
+    {% endfor %}
+{% else %}
+<div class="jumbotron mt-3">
+    <h1 class="display-4">No events available</h1>
+    <p class="lead">Check Back Later! Hopefully we'll add some soon!</p>
+    <hr class="my-4">
+    <a class="btn btn-primary btn-lg" href="/home" role="button">Home</a>
+  </div>
+{% endif %}
+
+{% endblock content %}

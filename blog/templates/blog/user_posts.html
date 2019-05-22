@@ -1,6 +1,7 @@
 {% extends "blog/base.html" %}
 {% load embed_video_tags %}
 {% block content %}
+{% if post.admin_approve == True %}
 <br>
 <h1 class="mb-3" >Posts by {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h1>
     {% for post in posts %}
@@ -55,4 +56,5 @@
         {% endif %}
 
     {% endif %}
+{% endif %}
 {% endblock content %}

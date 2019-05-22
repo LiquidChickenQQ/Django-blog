@@ -9,6 +9,7 @@ class Post(models.Model):
     video = EmbedVideoField(default='Enter a URL')
     date_posted = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    admin_approve = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

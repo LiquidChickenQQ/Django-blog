@@ -1,6 +1,7 @@
 {% extends "blog/base.html" %}
 {% load embed_video_tags %}
 {% block content %}
+{% if post.admin_approve == True %}
         <article class="container-fluid">
             <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
           <div class="media-body">
@@ -39,4 +40,5 @@
         <br>
         </article>
         <hr>
+{% endif %}
 {% endblock content %}

@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %}
+{% block content %}
+{% load static %}
+
+<h1>Previous Events!</h1>
+
+{% for pic in past_pics %}
+
+<hr>
+<img class="mt-3" src="/media/past_pics/" alt="Event Pics">
+
+
+{% endfor %}
+
+{% endblock content %}
